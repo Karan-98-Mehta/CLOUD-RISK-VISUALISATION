@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    { "id": "cloud", "label": "Cloud", "type": "cloud", "alerts": 412, "misconfigs": 24, "children": ["aws", "gcp", "azure", "saas"] },
+
+    { "id": "aws", "label": "AWS", "type": "aws", "alerts": 180, "misconfigs": 10, "children": ["aws-account-1", "aws-account-2"] },
+    { "id": "aws-account-1", "label": "AWS Account 1", "type": "aws", "alerts": 90, "misconfigs": 5, "children": ["ec2-1", "s3-1"] },
+    { "id": "aws-account-2", "label": "AWS Account 2", "type": "aws", "alerts": 90, "misconfigs": 5, "children": ["lambda-1", "rds-1"] },
+    { "id": "ec2-1", "label": "EC2-1", "type": "service", "alerts": 0, "misconfigs": 2, "children": ["vm-instance-1", "vm-instance-2"] },
+    { "id": "s3-1", "label": "S3-1", "type": "service", "alerts": 20, "misconfigs": 1 },
+    { "id": "lambda-1", "label": "Lambda-1", "type": "service", "alerts": 0, "misconfigs": 1 },
+    { "id": "rds-1", "label": "RDS-1", "type": "service", "alerts": 15, "misconfigs": 1 },
+
+    { "id": "vm-instance-1", "label": "VM-Instance-1", "type": "subservice", "alerts": 10, "misconfigs": 0 },
+    { "id": "vm-instance-2", "label": "VM-Instance-2", "type": "subservice", "alerts": 8, "misconfigs": 1 },
+
+    { "id": "gcp", "label": "GCP", "type": "gcp", "alerts": 100, "misconfigs": 6, "children": ["gcp-project-1", "gcp-project-2"] },
+    { "id": "gcp-project-1", "label": "GCP Project 1", "type": "gcp", "alerts": 60, "misconfigs": 3, "children": ["gce", "cloud-sql"] },
+    { "id": "gcp-project-2", "label": "GCP Project 2", "type": "gcp", "alerts": 40, "misconfigs": 3, "children": ["bigquery"] },
+    { "id": "gce", "label": "GCE", "type": "service", "alerts": 25, "misconfigs": 2 },
+    { "id": "cloud-sql", "label": "Cloud SQL", "type": "service", "alerts": 35, "misconfigs": 1 },
+    { "id": "bigquery", "label": "BigQuery", "type": "service", "alerts": 40, "misconfigs": 2 },
+
+    { "id": "azure", "label": "Azure", "type": "cloud", "alerts": 90, "misconfigs": 4, "children": ["azure-sub-1"] },
+    { "id": "azure-sub-1", "label": "Azure Sub 1", "type": "cloud", "alerts": 90, "misconfigs": 4, "children": ["vm-azure", "blob"] },
+    { "id": "vm-azure", "label": "VM Azure", "type": "service", "alerts": 0, "misconfigs": 2 },
+    { "id": "blob", "label": "Blob Storage", "type": "service", "alerts": 40, "misconfigs": 0 },
+
+    { "id": "saas", "label": "SaaS", "type": "saas", "alerts": 42, "misconfigs": 4, "children": ["github", "slack"] },
+    { "id": "github", "label": "GitHub", "type": "service", "alerts": 22, "misconfigs": 2 },
+    { "id": "slack", "label": "Slack", "type": "service", "alerts": 20, "misconfigs": 2 }
+  ],
+
+  "edges": [
+    { "source": "cloud", "target": "aws" },
+    { "source": "cloud", "target": "gcp" },
+    { "source": "cloud", "target": "azure" },
+    { "source": "cloud", "target": "saas" },
+
+    { "source": "aws", "target": "aws-account-1" },
+    { "source": "aws", "target": "aws-account-2" },
+    { "source": "aws-account-1", "target": "ec2-1" },
+    { "source": "aws-account-1", "target": "s3-1" },
+    { "source": "aws-account-2", "target": "lambda-1" },
+    { "source": "aws-account-2", "target": "rds-1" },
+    { "source": "ec2-1", "target": "vm-instance-1" },
+    { "source": "ec2-1", "target": "vm-instance-2" },
+
+    { "source": "gcp", "target": "gcp-project-1" },
+    { "source": "gcp", "target": "gcp-project-2" },
+    { "source": "gcp-project-1", "target": "gce" },
+    { "source": "gcp-project-1", "target": "cloud-sql" },
+    { "source": "gcp-project-2", "target": "bigquery" },
+
+    { "source": "azure", "target": "azure-sub-1" },
+    { "source": "azure-sub-1", "target": "vm-azure" },
+    { "source": "azure-sub-1", "target": "blob" },
+
+    { "source": "saas", "target": "github" },
+    { "source": "saas", "target": "slack" }
+  ]
+}
