@@ -1,4 +1,3 @@
-import React from 'react';
 import CloudGraph from './components/CloudGraph';
 
 function App() {

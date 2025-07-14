@@ -121,10 +121,12 @@ function CloudGraphInner() {
   );
 }
 
-export default function CloudGraph() {
+function CloudGraph() {
   return (
     <ReactFlowProvider>
       <CloudGraphInner />
     </ReactFlowProvider>
   );
 }
+
+export default CloudGraph;
