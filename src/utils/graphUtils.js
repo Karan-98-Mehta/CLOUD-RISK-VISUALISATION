@@ -7,8 +7,8 @@ dagreGraph.setDefaultEdgeLabel(() => ({}));
 dagreGraph.setGraph({ rankdir: 'LR' });
 
 export function processGraphData(raw) {
-  const nodeWidth = 800;
-  const nodeHeight = 250;
+  const nodeWidth = 300;
+  const nodeHeight = 110;
 
   const nodes = raw.nodes.map((n) => {
     dagreGraph.setNode(n.id, { width: nodeWidth, height: nodeHeight });
